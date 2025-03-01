@@ -11,16 +11,16 @@
 footer {
 	width: 100%;
 	height: 10vh;
-	color: #5c332e;
+	color: #fff;
 	display: flex;
 	padding-top: 20px;
 	text-align: center;
 	align-items: center;
 	justify-content: center;
-	background-color: #e6c8b7;
+	background-color: #382425;
 
 	& a {
-		color: #5c332e;
+		color: #fff;
 	}
 }
 

@@ -62,9 +62,25 @@ video {
   width: 100%;
 }
 
+#fh5co-couple,
+#fh5co-maps,
+#fh5co-gallery {
+  position: relative;
+}
 .shape {
-  transform: translateY(-100%) scaleY(-100%);
   filter: brightness(1) invert(1);
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+}
+.shape.top {
+  top: -50px;
+  transform: scaleY(-100%);
+}
+.shape.bottom {
+  transform: scaleY(100%);
+  bottom: -50px;
 }
 
 .countdown {
@@ -944,6 +960,10 @@ figure {
   }
 }
 
+#maps {
+  width: calc(100vw - 32px);
+  overflow: hidden;
+}
 #map {
   width: 100%;
   height: 500px;
@@ -1245,14 +1265,15 @@ form label {
   #fh5co-services,
   #fh5co-started,
   #fh5co-footer,
-  #fh5co-event,
   #fh5co-couple-story,
   #fh5co-gallery,
+  #fh5co-couple,
   .fh5co-section {
     padding: 3em 0;
   }
-  #fh5co-couple {
-    padding: 0 0 3em 0;
+
+  #fh5co-event {
+    padding: 0 0 4em 0;
   }
 }
 
@@ -2226,30 +2247,33 @@ form label {
 }
 
 .payments {
-  padding-top: 48px;
+  padding: 96px 0;
 }
 .payments .payment {
   position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 72px auto;
+  gap: 24px;
   align-items: center;
-  flex-direction: column;
   padding: 16px;
   border-radius: 15px;
   margin: 16px;
   background: white;
 }
 .payments .payment img {
-  width: 70vw;
+  width: 100%;
   object-fit: contain;
-  margin: auto;
-  margin-bottom: 32px;
-  margin-top: 16px;
+  margin: 0;
 }
 .payments .payment p {
   color: #191919;
-  text-align: center;
   font-family: sans-serif;
+  margin: 0;
+  line-height: 1.35;
+
+  & small {
+    opacity: 0.5;
+  }
 }
 
 .additional {
