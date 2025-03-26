@@ -54,7 +54,6 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: #828282;
   background: #fff;
 }
 
@@ -66,6 +65,27 @@ video {
 #fh5co-maps,
 #fh5co-gallery {
   position: relative;
+}
+#invited {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 4px;
+}
+.btn-maps {
+  display: block;
+  margin: 0 auto 24px auto;
+  color: #505050;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: fit-content;
+  padding: 4px 8px;
+  font-size: 15px;
+}
+.btn-maps:hover {
+  color: #FFFFFF;
+  background: #382425;
+  border: 1px solid #382425;
 }
 .shape {
   filter: brightness(1) invert(1);
@@ -180,6 +200,10 @@ a:focus {
 p {
   margin-bottom: 20px;
   font-family: 'Montserrat', sans-serif;
+}
+p,
+span {
+  line-height: 1.5;
 }
 
 h1 {
@@ -961,8 +985,10 @@ figure {
 }
 
 #maps {
-  width: calc(100vw - 32px);
+  width: 100vw;
+  transform: translateX(-16px);
   overflow: hidden;
+  margin-bottom: -8px;
 }
 #map {
   width: 100%;
@@ -1292,7 +1318,20 @@ form label {
     width: 100%;
   }
 }
-
+.with {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .couple-half:first-child {
+    padding-bottom: 32px;
+  }
+  .with {
+    display: block;
+    text-align: center;
+    margin-bottom: 64px;
+    font-style: italic;
+  }
+}
 .heart {
   position: absolute;
   top: 4em;
@@ -2248,6 +2287,7 @@ form label {
 
 .payments {
   padding: 96px 0;
+  position: relative;
 }
 .payments .payment {
   position: relative;
@@ -2265,7 +2305,8 @@ form label {
   object-fit: contain;
   margin: 0;
 }
-.payments .payment p {
+.payments .payment p,
+.payments .payment small {
   color: #191919;
   font-family: sans-serif;
   margin: 0;
@@ -2274,6 +2315,144 @@ form label {
   & small {
     opacity: 0.5;
   }
+}
+.payments .payment p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payments .payment button {
+  font-family: sans-serif;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  color: #505050;
+  background: transparent;
+}
+.confirm-wa {
+  background: #c7654d;
+  color: white;
+  margin: 0 auto;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 8px 16px;
+  display: block;
+  margin-top: 32px;
+}
+.modal-confirmation {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s;
+
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+
+  & .modal-confirmation__content {
+    background: #382425;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid white;
+    height: fit-content;
+    overflow: hidden;
+
+    & .modal-confirmation__header {
+      background: white;
+      margin: -16px -16px 48px -16px;
+      width: calc(100% + 32px);
+      position: relative;
+      padding: 32px 0 16px 0;
+    }
+
+    & h1 {
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    & h6 {
+      font-family: "Montserrat", sans-serif;
+      color: white;
+      margin-top: 8px;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    & input,
+    & textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      outline: none;
+    }
+    & input::placeholder,
+    & textarea::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    & .checkbox {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      & > div {
+        position: relative;
+        flex-direction: row-reverse;
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        padding: 12px 16px;
+        gap: 16px;
+
+        &:has(input::checked) label {
+          border: 1px solid green !important;
+        }
+      }
+      & input {
+        width: fit-content;
+      }
+      & label {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        padding-left: 0;
+
+        & img {
+          height: 24px;
+        }
+      }
+    }
+
+    & .confirm-wa {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+}
+.modal-confirmation.show {
+  display: flex !important;
+  align-items: center;
+  opacity: 1;
+  pointer-events: initial;
 }
 
 .additional {

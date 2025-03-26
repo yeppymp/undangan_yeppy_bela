@@ -227,7 +227,6 @@
 		counterWayPoint();
 	});
 
-
 	const params = new Proxy(new URLSearchParams(window.location.search), {
 		get: (searchParams, prop) => searchParams.get(prop),
 	});
@@ -235,7 +234,32 @@
 	const invited = document.getElementById('invited');
 
 	if (to && invited) {
-		invited.innerHTML = `Kepada Yth. ${to}`;
+		invited.innerHTML = to;
 	}
 }());
+
+var copyText = function(button, text) {
+	var tempInput = document.createElement('input');
+	tempInput.value = text;
+	document.body.appendChild(tempInput);
+	tempInput.select();
+	tempInput.setSelectionRange(0, 99999); // For mobile devices
+	navigator.clipboard.writeText(tempInput.value).then(function() {
+		button.innerHTML = 'copied';
+		setTimeout(() => {
+			button.innerHTML = 'copy';
+		}, 2000);
+		// console.log('Text copied to clipboard');
+	}).catch(function(err) {
+		// console.error('Could not copy text: ', err);
+	});
+	document.body.removeChild(tempInput);
+};
+
+document.querySelectorAll('.copy-button').forEach(function(button) {
+	button.addEventListener('click', function() {
+		var textToCopy = button.getAttribute('data-copy-text');
+		copyText(button, textToCopy);
+	});
+});
 
